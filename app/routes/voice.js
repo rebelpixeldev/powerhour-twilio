@@ -18,7 +18,7 @@ module.exports = function (app) {
      */
     app.get('/voice/gather', (req, res) => {
         const params = url.parse(req.url, true).query;
-        console.log('* * * * * * * * * * * Call received');
+        console.log(' * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * Call received');
         console.log(params);
         const message = req.getMessage(params.Caller);
         res.header('Content-Type', 'application/xml');

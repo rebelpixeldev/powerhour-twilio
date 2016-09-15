@@ -5,7 +5,7 @@ module.exports = function(app){
 
     app.get('/sms/receive-and-send', (req, res) => {
         const params = url.parse(req.url, true).query;
-        console.log('Text message recieved * * * * * * * * * * * * * * * * ');
+        console.log(' * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * Text message recieved');
         console.log(params);
 
         req.client.messages.create({
