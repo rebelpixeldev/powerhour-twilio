@@ -3,7 +3,7 @@
     <Pause length="1" />
     <Say voice="woman">The digits that you have entered are: {{ digitsTalk }}</Say>
     <Sms from="+16479311270" to="+14169496743">You had a call from {{ params.Digits }} They are located in {{params.CalledCity}}</Sms>
-    <Sms from="+16479311270" to="+1{{digits}}">Thanks for signing up with cat facts! You will get a cat fact every 2 minnutes for the rest of your life. Enjoy!</Sms>
+    <Sms from="+16479311270" to="+1{{digits}}">{{message}}</Sms>
     <Pause length="1" />
     <Say voice="man">Goodbye</Say>
     <Hangup/>
