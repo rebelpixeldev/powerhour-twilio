@@ -59,7 +59,7 @@ app.set('views', path.join(__dirname, '/app/views/'));
                 console.error('Could not send message');
                 console.error(err);
             } else {
-                console.log('message sent to ' + params.From);
+                res.send('message sent to ' + params.to);
             }
         });
     });
@@ -76,25 +76,23 @@ app.set('views', path.join(__dirname, '/app/views/'));
     /** * * * * * * * * * * * * ** *
      *  RECEIVE AND SEND
      */
-    app.get('/sms/contest-recieve', (req, res) => {
+    app.get('/sms/contest-receive', (req, res) => {
         const params = url.parse(req.url, true).query;
         console.log('Text message recieved * * * * * * * * * * * * * * * * ');
         console.log(params);
 
-        if ( params.Body.toLowerCase().indexOf('enter me!')){
-            client.messages.create({
-                body: getMessage(params.From),
-                to: params.From,
-                from: '+16479311270'
-            }, function(err, data) {
-                if (err) {
-                    console.error('Could not send message');
-                    console.error(err);
-                } else {
-                    console.log('message sent to ' + params.From);
-                }
-            });
-        }
+        client.messages.create({
+            body: getMessage(params.From),
+            to: params.From,
+            from: '+16479311270'
+        }, function(err, data) {
+            if (err) {
+                console.error(err);
+                res.send('Could not send message');
+            } else {
+                res.send('message sent to ' + params.From);
+            }
+        });
 
         numbers.push(params.From);
         numbers = _.uniq(numbers);
@@ -106,16 +104,16 @@ app.set('views', path.join(__dirname, '/app/views/'));
         const winner = numbers[Math.floor(Math.random() * numbers.length)];
 
         client.messages.create({
-            body: 'Congratulations! You Winn!!',
+            body: 'Congratulations! You Win!!',
             to: winner,
             from: '+16479311270',
             mediaUrl : 'http://45.55.201.172:3000/assets/images/winner-photo.jpg'
         }, function(err, data) {
             if (err) {
-                console.error('Could not send message');
                 console.error(err);
+                res.send('Could not send message');
             } else {
-                console.log('message sent to ' + winner);
+                res.send('message sent to ' + winner);
             }
         });
 
