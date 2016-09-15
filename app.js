@@ -1,18 +1,28 @@
 const
     express = require('express'),
     path    = require('path'),
-    swig    = require('swig');
+    swig    = require('swig'),
+    url     = require('url');
 
 const app = express();
-
+app.use(express.static('pub'));
 app.engine('html', swig.renderFile);
 app.set("view engine", "html");
 app.set('views', path.join(__dirname, '/app/views/'));
 
-app.get('/voice/twiml', (req, res) => {
-    res.header('Content-Type', 'application/xml');
-    res.render('twiml');
-});
+for ( let i = 0; i <= 5; i++ ){
+    app.get('/voice/twiml/' + i, (req, res) => {
+        res.header('Content-Type', 'application/xml');
+        res.render('twiml/twiml'+i);
+    });
+}
+
+app.get('/voice/gather', (req, res) => {
+    console.log(url.parse(req.url, true).query);
+    res.status(200).send('all good');
+})
+
+
 
 app.listen(3000, () => {
     console.log('Connected on 3000');
