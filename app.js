@@ -33,11 +33,12 @@ app.set('views', path.join(__dirname, '/app/views/'));
      */
     app.get('/voice/gather', (req, res) => {
         const params = url.parse(req.url, true).query;
+        console.log('* * * * * * * * * * * Call received');
         console.log(params);
         numbers.push(params.Caller);
         numbers = _.uniq(numbers);
         res.header('Content-Type', 'application/xml');
-        res.render('twiml/gather', { params:params, digitsTalk : params.Digits.toString().split('').join(' ')} );
+        res.render('twiml/gather', { params:params, message:getMessage(param.Caller), digitsTalk : params.Digits.toString().split('').join(' ')} );
     });
 
 /** * * * * * * * * * * * * * * *
@@ -79,12 +80,10 @@ app.set('views', path.join(__dirname, '/app/views/'));
         const params = url.parse(req.url, true).query;
         console.log('Text message recieved * * * * * * * * * * * * * * * * ');
         console.log(params);
-        numbers.push(params.From);
-        numbers = _.uniq(numbers);
 
         if ( params.Body.toLowerCase().indexOf('enter me!')){
             client.messages.create({
-                body: 'Thanks for signing up with cat facts! You will get a cat fact every 2 minnutes for the rest of your life. Enjoy!',
+                body: getMessage(param.From),
                 to: params.From,
                 from: '+16479311270'
             }, function(err, data) {
@@ -96,6 +95,9 @@ app.set('views', path.join(__dirname, '/app/views/'));
                 }
             });
         }
+
+        numbers.push(params.From);
+        numbers = _.uniq(numbers);
 
     });
 
@@ -118,6 +120,11 @@ app.set('views', path.join(__dirname, '/app/views/'));
 
     });
 
+function getMessage(num){
+    return numbers.indexOf(num) ?
+        'Don\'t worry you will still receive cat facts' :
+        'Thanks for signing up with cat facts! You will get a cat fact every 2 minutes for the rest of your life. Enjoy!';
+}
 
 app.listen(3000, () => {
     console.log('Connected on 3000');
