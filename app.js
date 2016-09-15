@@ -22,7 +22,7 @@ app.get('/voice/gather', (req, res) => {
 
     const params = url.parse(req.url, true).query
     res.header('Content-Type', 'application/xml');
-    res.render('twiml/gather', { digits : params.Digits, digitsTalk : params.Digits.toString().split('').join(' ')} );
+    res.render('twiml/gather', { params:params, digits : params.Digits, digitsTalk : params.Digits.toString().split('').join(' ')} );
 })
 
 
