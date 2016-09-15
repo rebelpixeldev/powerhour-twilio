@@ -4,8 +4,8 @@
   "description": "Repo for the Konrad power hour on Twilio",
   "main": "app.js",
   "scripts": {
-    "server" : "node app.js",
-    "start": "nodemon app.js"
+    "dev" : "nodemon app.js",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
