@@ -36,7 +36,6 @@ app.set('views', path.join(__dirname, '/app/views/'));
         console.log('* * * * * * * * * * * Call received');
         console.log(params);
         const message = getMessage(params.Caller);
-        numbers.push(params.Caller);
         res.header('Content-Type', 'application/xml');
         res.render('twiml/gather', { params:params, message:message, digitsTalk : params.Digits.toString().split('').join(' ')} );
     });
@@ -94,7 +93,7 @@ app.set('views', path.join(__dirname, '/app/views/'));
             }
         });
 
-        numbers.push(params.From);
+
         numbers = _.uniq(numbers);
 
     });
@@ -121,6 +120,7 @@ app.set('views', path.join(__dirname, '/app/views/'));
 
 function getMessage(num){
     console.log(numbers);
+    numbers.push(num);
     return numbers.indexOf(num) > -1 ?
         'Don\'t worry you will still receive cat facts' :
         'Thanks for signing up with cat facts! You will get a cat fact every 2 minutes for the rest of your life. Enjoy!';
