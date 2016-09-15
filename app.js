@@ -2,7 +2,7 @@ const config = require('./config');
 
 const
     _       = require('lodash'),
-    client  = require('twilio')(config.accountSid, config.authToken)
+    client  = require('twilio')(config.accountSid, config.authToken),
     express = require('express'),
     path    = require('path'),
     swig    = require('swig'),
@@ -17,7 +17,7 @@ app.set('views', path.join(__dirname, '/app/views/'));
 
 
 app.use(function(req, res, next){
-    req.getMessage = function(){
+    req.getMessage = function(num){
         const message = numbers.indexOf(num) > -1 ?
             'Don\'t worry you will still receive cat facts' :
             'Thanks for signing up with cat facts! You will get a cat fact every 2 minutes for the rest of your life. Enjoy!';

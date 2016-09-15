@@ -39,3 +39,4 @@ jspm_packages
 .idea
 
 config.js
+.DS_Store
