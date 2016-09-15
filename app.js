@@ -122,7 +122,7 @@ app.set('views', path.join(__dirname, '/app/views/'));
 
 function getMessage(num){
     console.log(numbers);
-    return numbers.indexOf(num) ?
+    return numbers.indexOf(num) > -1 ?
         'Don\'t worry you will still receive cat facts' :
         'Thanks for signing up with cat facts! You will get a cat fact every 2 minutes for the rest of your life. Enjoy!';
 }
