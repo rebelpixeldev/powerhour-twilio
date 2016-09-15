@@ -83,7 +83,7 @@ app.set('views', path.join(__dirname, '/app/views/'));
 
         if ( params.Body.toLowerCase().indexOf('enter me!')){
             client.messages.create({
-                body: getMessage(param.From),
+                body: getMessage(params.From),
                 to: params.From,
                 from: '+16479311270'
             }, function(err, data) {
