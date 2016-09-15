@@ -1,0 +1,23 @@
+{
+  "name": "power-hour-twilio",
+  "version": "1.0.0",
+  "description": "Repo for the Konrad power hour on Twilio",
+  "main": "app  .js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsczelecki/power-hour-twilio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tsczelecki/power-hour-twilio/issues"
+  },
+  "homepage": "https://github.com/tsczelecki/power-hour-twilio#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "swig": "^1.4.2"
+  }
+}
