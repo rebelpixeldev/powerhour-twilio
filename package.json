@@ -2,7 +2,7 @@
   "name": "power-hour-twilio",
   "version": "1.0.0",
   "description": "Repo for the Konrad power hour on Twilio",
-  "main": "app  .js",
+  "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
   },
