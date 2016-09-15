@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Pause length="0.25" />
+    <Say voice="woman">The digits that you have entered are: {{ params.Digits }}</Say>
+    <Sms from="+16479311270" to="+14169496743">You had a call from {{ params.Digits }}</Sms>
+    <Pause length="0.25" />
+    <Say voice="man">Goodbye</Say>
+    <Hangup/>
+</Response>

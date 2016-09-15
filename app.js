@@ -19,7 +19,8 @@ for ( let i = 0; i <= 5; i++ ){
 
 app.get('/voice/gather', (req, res) => {
     console.log(url.parse(req.url, true).query);
-    res.status(200).send('all good');
+    res.header('Content-Type', 'application/xml');
+    res.render('twiml/gather', { params : url.parse(req.url, true).query} );
 })
 
 

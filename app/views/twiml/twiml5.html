@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <Gather action="/voice/gather" method="GET" timeout="15">
+    <Pause length="0.25" />
+    <Gather action="/voice/gather" method="GET" timeout="2">
         <Say>Please enter your phone number with the area code</Say>
+        <Play loop="10">http://45.55.201.172:3000/assets/sounds/smw_coin.wav</Play>
+
     </Gather>
 </Response>
