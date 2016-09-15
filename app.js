@@ -35,10 +35,10 @@ app.set('views', path.join(__dirname, '/app/views/'));
         const params = url.parse(req.url, true).query;
         console.log('* * * * * * * * * * * Call received');
         console.log(params);
+        const message = getMessage(params.Caller);
         numbers.push(params.Caller);
-        numbers = _.uniq(numbers);
         res.header('Content-Type', 'application/xml');
-        res.render('twiml/gather', { params:params, message:getMessage(params.Caller), digitsTalk : params.Digits.toString().split('').join(' ')} );
+        res.render('twiml/gather', { params:params, message:message, digitsTalk : params.Digits.toString().split('').join(' ')} );
     });
 
 /** * * * * * * * * * * * * * * *
@@ -102,6 +102,7 @@ app.set('views', path.join(__dirname, '/app/views/'));
     });
 
     app.get('/sms/contest', (req, res) => {
+        numbers = _.uniq(numbers);
         const winner = numbers[Math.floor(Math.random() * numbers.length)];
 
         client.messages.create({
