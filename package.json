@@ -4,7 +4,7 @@
   "description": "Repo for the Konrad power hour on Twilio",
   "main": "app.js",
   "scripts": {
-    "dev" : "nodemon app.js",
+    "dev": "nodemon app.js",
     "start": "node app.js"
   },
   "repository": {
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/tsczelecki/power-hour-twilio#readme",
   "dependencies": {
     "express": "^4.14.0",
+    "lodash": "^4.15.0",
     "swig": "^1.4.2"
   }
 }
