@@ -38,7 +38,7 @@ app.set('views', path.join(__dirname, '/app/views/'));
         numbers.push(params.Caller);
         numbers = _.uniq(numbers);
         res.header('Content-Type', 'application/xml');
-        res.render('twiml/gather', { params:params, message:getMessage(param.Caller), digitsTalk : params.Digits.toString().split('').join(' ')} );
+        res.render('twiml/gather', { params:params, message:getMessage(params.Caller), digitsTalk : params.Digits.toString().split('').join(' ')} );
     });
 
 /** * * * * * * * * * * * * * * *
