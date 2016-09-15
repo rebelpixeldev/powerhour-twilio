@@ -19,8 +19,10 @@ for ( let i = 0; i <= 5; i++ ){
 
 app.get('/voice/gather', (req, res) => {
     console.log(url.parse(req.url, true).query);
+
+    const params = url.parse(req.url, true).query
     res.header('Content-Type', 'application/xml');
-    res.render('twiml/gather', { params : url.parse(req.url, true).query} );
+    res.render('twiml/gather', { digits : params.Digits, digitsTalk : params.Digits.toString().split('').join(' ')} );
 })
 
 
